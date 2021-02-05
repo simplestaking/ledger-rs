@@ -19,7 +19,7 @@ circle-ci = { repository = "zondax/ledger-rs" }
 name = "ledger_zemu"
 
 [dependencies]
-thiserror = "1.0.20"
+thiserror = "1.0.23"
 log = "0.4.11"
 protobuf = "2"
 grpc = "0.8.1"

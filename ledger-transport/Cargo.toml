@@ -19,11 +19,11 @@ circle-ci = { repository = "zondax/ledger-rs" }
 name = "ledger_transport"
 
 [dependencies]
-byteorder = "1.4"
-lazy_static = "1.4"
-futures = "0.3"
+byteorder = "1.4.2"
+lazy_static = "1.4.0"
+futures = "0.3.12"
 serde = { version = "1.0", features = ["derive"] }
-thiserror = "1.0"
+thiserror = "1.0.23"
 trait-async = "0.1.24"
 
 ledger-apdu = { path = "../ledger-apdu", version = "0.8.0" }
@@ -36,10 +36,9 @@ ledger-transport-tcp = { path = "../ledger-transport-tcp", version = "0.8.0" }
 
 # For wasm compiling
 [target.'cfg(target_arch = "wasm32")'.dependencies]
-wasm-bindgen = "0.2"
-wasm-bindgen-futures = "0.4"
-js-sys = "0.3"
+wasm-bindgen = "0.2.70"
+wasm-bindgen-futures = "0.4.20"
+js-sys = "0.3.47"
 
 [dev-dependencies]
-sha2 = "0.9"
-
+sha2 = "0.9.3"
