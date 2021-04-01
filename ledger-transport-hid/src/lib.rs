@@ -21,7 +21,7 @@ extern crate serial_test;
 
 mod errors;
 
-use crate::errors::LedgerHIDError;
+pub use crate::errors::LedgerHIDError;
 use byteorder::{BigEndian, ReadBytesExt};
 use cfg_if::cfg_if;
 use hidapi::HidDevice;
@@ -121,8 +121,9 @@ impl TransportNativeHID {
     pub fn new() -> Result<Self, LedgerHIDError> {
         let apiwrapper = HIDAPIWRAPPER.lock().expect("Could not lock api wrapper");
         let api_mutex = apiwrapper.get().expect("Error getting api_mutex");
-        let api = api_mutex.lock().expect("Could not lock");
+        let mut api = api_mutex.lock().expect("Could not lock");
 
+        api.refresh_devices()?;
         let device_path = TransportNativeHID::find_ledger_device_path(&api)?;
         let device = api.open_path(&device_path)?;
 
